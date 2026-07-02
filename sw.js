@@ -1,4 +1,4 @@
-const CACHE_NAME = "zeiterfassung-v1";
+const CACHE_NAME = "zeiterfassung-v2";
 const ASSETS = ["./", "index.html", "style.css", "app.js", "manifest.json"];
 
 self.addEventListener("install", (event) => {

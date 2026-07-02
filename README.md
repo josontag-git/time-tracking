@@ -24,8 +24,20 @@ Einfache Progressive Web App zum Erfassen von Arbeitszeiten. Läuft auf dem iPho
 
 1. In der App auf das Zahnrad-Symbol (⚙) tippen.
 2. Die kopierte Web-App-URL einfügen, speichern.
-3. Ab jetzt werden gestoppte/manuelle Einträge automatisch ins Sheet geschrieben (Tabellenblatt "Zeiten" wird automatisch angelegt).
-4. Der Button "Synchronisieren" schickt alle noch nicht übertragenen Einträge erneut (z. B. nach Offline-Nutzung).
+3. Ab jetzt werden gestoppte/manuelle Einträge automatisch ins Sheet geschrieben. Zeit-Einträge landen im Tabellenblatt "Zeiten", Kilometerpauschalen im Tabellenblatt "Kilometer" (beide werden automatisch angelegt).
+4. Der Button "Synchronisieren" schickt alle noch nicht übertragenen Einträge erneut (z. B. nach Offline-Nutzung oder nach dem Bearbeiten eines Eintrags).
+
+## Einträge bearbeiten
+
+Über das Stift-Symbol (✎) an einem Eintrag lassen sich Projekt, Datum, Zeiten/Kilometer und Notiz direkt in der Liste ändern. Gespeicherte Änderungen werden automatisch erneut ans Sheet übertragen — dort wird die bestehende Zeile (anhand der internen ID) aktualisiert statt eine neue anzulegen.
+
+## Kilometerpauschale
+
+Unter dem Tab "Kilometer" im manuellen Eintrag lassen sich Fahrten erfassen (Datum, Zweck, Kilometer, Notiz). Der Kilometersatz (Standard 0,30 €/km) kann in den Einstellungen angepasst werden.
+
+## Hell/Dunkel-Modus
+
+In den Einstellungen unter "Design" lässt sich zwischen Hell, Dunkel und System (folgt der iPhone-Einstellung) wählen.
 
 ## Hosting (GitHub Pages)
 
