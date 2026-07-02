@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zeiterfassung</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Zeiterfassung">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>Zeiterfassung</h1>
+  <button id="settingsBtn" class="icon-btn" aria-label="Einstellungen">⚙</button>
+</header>
+
+<main>
+  <section class="timer-card">
+    <div id="timerDisplay" class="timer-display">00:00:00</div>
+    <input id="projectInput" type="text" placeholder="Projekt / Aufgabe" autocomplete="off">
+    <div class="btn-row">
+      <button id="startBtn" class="btn btn-primary">Start</button>
+      <button id="stopBtn" class="btn btn-danger" disabled>Stop</button>
+    </div>
+  </section>
+
+  <section class="manual-card">
+    <h2>Manueller Eintrag</h2>
+    <form id="manualForm" class="manual-form">
+      <input type="text" id="mProject" placeholder="Projekt / Aufgabe" required>
+      <div class="row">
+        <input type="date" id="mDate" required>
+        <input type="time" id="mStart" required>
+        <input type="time" id="mEnd" required>
+      </div>
+      <input type="text" id="mNote" placeholder="Notiz (optional)">
+      <button type="submit" class="btn btn-secondary">Hinzufügen</button>
+    </form>
+  </section>
+
+  <section class="entries-card">
+    <div class="entries-header">
+      <h2>Einträge</h2>
+      <button id="syncBtn" class="btn btn-small">Synchronisieren</button>
+    </div>
+    <ul id="entriesList" class="entries-list"></ul>
+  </section>
+</main>
+
+<div id="settingsModal" class="modal hidden">
+  <div class="modal-content">
+    <h2>Einstellungen</h2>
+    <label for="scriptUrl">Google Apps Script Web-App URL</label>
+    <input type="url" id="scriptUrl" placeholder="https://script.google.com/macros/s/.../exec">
+    <p class="hint">Diese URL bekommst du beim Deployen des Apps Script (siehe README).</p>
+    <div class="btn-row">
+      <button id="saveSettingsBtn" class="btn btn-primary">Speichern</button>
+      <button id="closeSettingsBtn" class="btn btn-secondary">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

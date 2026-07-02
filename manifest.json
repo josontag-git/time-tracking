@@ -1,0 +1,10 @@
+{
+  "name": "Zeiterfassung",
+  "short_name": "Zeiterfassung",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0f1420",
+  "theme_color": "#111827",
+  "icons": []
+}
