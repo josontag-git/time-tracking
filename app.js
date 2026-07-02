@@ -56,6 +56,14 @@ function minutesBetween(dateStr, startStr, endStr) {
   return Math.round((end - start) / 60000);
 }
 
+function formatDuration(totalMin) {
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  if (h === 0) return `${m} Min`;
+  if (m === 0) return `${h} Std`;
+  return `${h} Std ${m} Min`;
+}
+
 function renderEntries() {
   const entries = loadEntries().slice().sort((a, b) => (a.date + a.start < b.date + b.start ? 1 : -1));
   entriesList.innerHTML = "";
@@ -65,7 +73,7 @@ function renderEntries() {
     li.innerHTML = `
       <div class="entry-info">
         <div class="entry-title">${escapeHtml(entry.project)}</div>
-        <div class="entry-meta">${entry.date} · ${entry.start}–${entry.end} · ${entry.durationMin} min${entry.note ? " · " + escapeHtml(entry.note) : ""}</div>
+        <div class="entry-meta">${entry.date} · ${entry.start}–${entry.end} · ${formatDuration(entry.durationMin)}${entry.note ? " · " + escapeHtml(entry.note) : ""}</div>
       </div>
       <span class="entry-status ${entry.synced ? "status-synced" : "status-pending"}">${entry.synced ? "OK" : "offen"}</span>
       <button class="entry-delete" data-id="${entry.id}" aria-label="Löschen">✕</button>
@@ -219,6 +227,26 @@ stopBtn.addEventListener("click", () => {
 
 // --- Manuelle Eingabe ---
 
+const mDateInput = document.getElementById("mDate");
+const mStartInput = document.getElementById("mStart");
+const mEndInput = document.getElementById("mEnd");
+const mDurationPreview = document.getElementById("mDurationPreview");
+
+function updateManualDurationPreview() {
+  const date = mDateInput.value;
+  const start = mStartInput.value;
+  const end = mEndInput.value;
+  if (!date || !start || !end) {
+    mDurationPreview.textContent = "";
+    return;
+  }
+  mDurationPreview.textContent = `Dauer: ${formatDuration(minutesBetween(date, start, end))}`;
+}
+
+[mDateInput, mStartInput, mEndInput].forEach((el) =>
+  el.addEventListener("input", updateManualDurationPreview)
+);
+
 manualForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const project = document.getElementById("mProject").value.trim();
@@ -240,6 +268,8 @@ manualForm.addEventListener("submit", (e) => {
   };
   addEntry(entry);
   manualForm.reset();
+  document.getElementById("mDate").valueAsDate = new Date();
+  updateManualDurationPreview();
 });
 
 // --- Einstellungen ---

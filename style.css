@@ -162,4 +162,5 @@ h2 { font-size: 1rem; margin: 0 0 10px; color: var(--muted); }
   width: 100%;
 }
 .hint { font-size: 0.8rem; color: var(--muted); margin-top: -4px; }
+.duration-preview { font-size: 0.85rem; color: var(--muted); margin: -4px 0 10px; min-height: 1.1em; }
 label { font-size: 0.85rem; color: var(--muted); }
